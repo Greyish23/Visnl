@@ -15,21 +15,7 @@ const texts = [
           and PMS, pumps, pressure testing, construction of 
           gas stations, calibration of tanks, construction 
           of tanks, sales and servicing of flow Meters,dip 
-          stick fabrication,water separation etc.\n\n
-
-          VISNL was founded by Mr Aina Olayiwola Victor,
-          after recognizing the need for an oil and gas 
-          servicing firm that would deliver quality and 
-          timely solution in oil and gas industries. After 
-          20years in Our sister company - Multisecure Nigeria 
-          Limited, VISNL has shown passion for providing 
-          solutions in oil and gas industry, through our 
-          trained, disciplined and experienced staffs. \n
-
-          OUR MISSION is to provide first-class quality and 
-          services to all our valuable customers and to 
-          always be innovative and alert in the marketplace 
-          we serve.`
+          stick fabrication,water separation etc.\n\n`
   ];
   
   let charIndex = 0;
