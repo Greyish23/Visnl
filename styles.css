@@ -383,4 +383,37 @@
       flex-direction: row;
     }
   }
+
+/* Mobile Fixes for Slider */
+@media (max-width: 768px) {
+  .overlay-text {
+    opacity: 1; /* Always show text on mobile */
+    position: static;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    margin-top: 1rem;
+    color: white;
+    max-width: 100%;
+  }
+
+  .slide img {
+    filter: none !important; /* Remove blur on mobile */
+  }
+
+  .prev, .next {
+    top: auto;
+    bottom: 20px;
+    transform: translateY(0);
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+}
   
