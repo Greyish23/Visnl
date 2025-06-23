@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products</title>
+  <link rel="icon" href="img/Union.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* RESET & GLOBAL STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #ddd;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 4px;
+    }
+
+     /* Header Section */
+     .sticky-header { 
+       position: sticky; 
+       top: 0; 
+       width: 100%; 
+       padding: 1rem 2rem;
+       display: flex; 
+       justify-content: space-between; 
+       align-items: center; 
+       background-color: rgba(255, 255, 255, 0.1);
+       border-bottom: 1px solid #e8e4e2; 
+       /*backdrop-filter: blur(20px);*/ 
+       z-index: 1000; 
+     }
+     
+     .logo { 
+       font-size: 1.5rem; 
+       font-weight: bold; 
+       color: black;
+     }
+     
+     .hamburger {
+       width: 30px;
+       cursor: pointer;
+     }
+     
+     .hamburger span {
+       display: block;
+       height: 3px;
+       background: black;
+       margin: 5px 0;
+       border-radius: 3px;
+     }
+     
+     #sideNav { 
+       position: fixed; 
+       top: 0; 
+       right: -250px; 
+       width: 250px; 
+       height: 100vh; 
+       background: black; 
+       backdrop-filter: blur(10px); 
+       transition: right 0.3s ease; 
+       z-index: 999; 
+       padding-top: 60px; 
+     }
+     
+     #sideNav ul { 
+       list-style: none; 
+       padding: 0; 
+       text-align: center; 
+     }
+     
+     #sideNav ul li { 
+       margin: 20px 0; 
+     }
+     
+     #sideNav ul li a { 
+       text-decoration: none; 
+       color: #f1f1f1; 
+       font-size: 1.2rem; 
+     }
+     
+     #sideNav.open { 
+       right: 0; 
+     }
+
+
+     .centered-text{
+      margin: 30px auto;
+      text-align: center;
+      font-size: 2rem;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+      'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     }
+    /* MAIN CONTENT */
+    .container {
+      max-width: 1200px;
+      margin: 120px auto 0 auto;
+      padding: 20px;
+    }
+
+    .product-box {
+      display: flex;
+      background: #fff;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .product-box img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: cover;
+      flex: 1;
+    }
+
+    .product-info {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .product-box.show .product-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-info h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .product-info p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    .items-grid{
+        display: flex;
+        grid-template-columns: repeat(auto-fit, minimax(200px,1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+
+    .items-grid ul{
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    .items-grid li{
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: #222;
+      color: #fff;
+      padding: 40px;
+      text-align: center;
+      margin: 60px auto;
+      border-radius: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .product-box {
+        flex-direction: column;
+      }
+      .product-box img{
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="sticky-header">
+    <div class="logo">VISNL</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+</header> 
+    <nav id="sideNav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    </nav>
+   <div class="centered-text">
+    <h3><u>OUR PRODUCTS</u></h3>
+   </div>
+  <div class="container">
+    <!-- PRODUCTS -->
+    <div class="product-box">
+      <img src="img/Fuel Dispenser.jpg" alt="Product 1">
+      <div class="product-info">
+        <h2>Fuel Dispensers</h2>
+        <p> VISNL specializes in providing fuel dispensers for 
+            gas stations. These equipment accurately measure 
+            and dispense diesel and petrol (PMS) into vehicles, 
+            ensuring safe and precise fuel transfer. With features 
+            like flow control, metering, and safety mechanisms, 
+            VISNL's fuel dispensers prevent spills and overfilling, 
+            guaranteeing a seamless refueling experience for customers.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/tools (2).jpg" alt="Product 2">
+      <div class="product-info">
+        <h2>Pumps</h2>
+        <p>VISNL is a leading supplier of pumps specifically 
+            designed for the oil and gas industry. These 
+            pumps play a vital role in transferring various 
+            fluids, including petroleum products, water, 
+            and chemicals, throughout different operations 
+            such as extraction, refining, and transportation. 
+            With their robust construction and efficient 
+            performance, VISNL's pumps ensure smooth fluid 
+            movement through pipelines, tanks, and other 
+            infrastructure, contributing to the overall 
+            efficiency and reliability of oil and gas operations.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/tools (1).jpg" alt="Product 3">
+      <div class="product-info">
+        <h2>Pressure Testing Equipment</h2>
+        <p>As an industry expert, VISNL offers a 
+            wide range of pressure testing equipment 
+            to assess the integrity and reliability of 
+            pipelines, vessels, and other oil and gas 
+            infrastructure. These equipment are essential 
+            for identifying potential leaks, weaknesses, 
+            or defects in the system. By subjecting the 
+            equipment to controlled pressures, VISNL's 
+            pressure testing solutions help ensure safety 
+            and prevent hazardous situations in the oil 
+            and gas sector, allowing operators to maintain 
+            the highest standards of operational integrity.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/tools (4).jpg" alt="Product 4">
+      <div class="product-info">
+        <h2>Flow Meters</h2>
+        <p>VISNL sells and services flow meters, which are 
+            instruments used to measure the flow rate of 
+            liquids or gases. Flow meters are crucial in 
+            monitoring the volume and efficiency of fluid 
+            transport in oil and gas processes. <br> 
+            
+            We are very serious about our flow meters, 
+            and we are constantly working to source new 
+            flow meters and to serve more refiners with 
+            the meters and blends they require.'
+            
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/tools (3).jpg" alt="Product 5">
+      <div class="product-info">
+        <h2>Storage Tank Calibration</h2>
+        <p>VISNL specializes in tank calibration services. This 
+            involves accurately determining the capacity and 
+            volume of storage tanks used for petroleum products. 
+            Calibration ensures precise measurements and 
+            compliance with industry standards. <br> <br>
+            
+            Tank calibration is essential to comply with 
+            industry regulations, prevent inaccuracies in 
+            inventory management, and maintain operational 
+            efficiency. With expertise in tank calibration, 
+            VISNL ensures precise measurements by comparing 
+            physical tank measurements with established 
+            standards, taking into account factors 
+            such as temperature and pressure.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/products-img6.png" alt="Product 6">
+      <div class="product-info">
+        <h2>Energy of the Future</h2>
+        <p>As a responsible participant of the energy market, 
+            VISNL is moving forward to make sure our energy 
+            becomes cleaner, more affordable, and widely vailable.
+            VISNL is invested in renewable power generation with 
+            a firm view to expand this commitment both 
+            geographically and financially. <br> <br>
+            We take an active part in industry discussions 
+            for assessment and deployment of blue and 
+            green hydrogen solutions as key fuels of 
+            the future. Meeting the global need for 
+            clean hydrogen is fundamental to VISNL 
+            vision of a cleaner world with zero 
+            carbon emissions. We are engaging and 
+            will continue to engage with a broad 
+            range of stakeholders cross the industry 
+            to make the hydrogen fuelled world a reality.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+      <img src="img/Oil Water Seperation.png" alt="Product 7">
+      <div class="product-info">
+        <h2>Water Separation Systems</h2>
+        <p>VISNL provides water separation systems for the oil 
+            and gas industry. These systems help remove water 
+            from crude oil or natural gas, ensuring the quality 
+            and purity of the extracted resources.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-box">
+        <img src="img/unnamed.jpg" alt="Product 7">
+        <div class="product-info">
+          <h2>Petrochemical Products</h2>
+          <p>Petrochemicals are sophisticated products, and 
+            Coral Energy delivering them to customers. Our 
+            dynamic petrochemicals team runs positions in: <br> <br>
+            <div class="items-grid">
+                <ul>
+                    <li>Acetates</li>
+                    <li>Ethylene</li>
+                    <li>PA</li>
+                    <li>Polyethylene</li>
+                    <li>IVAM</li>
+                </ul>
+
+                <ul>
+                    <li>Acrylios</li>
+                    <li>DEG</li>
+                    <li>EDC</li>
+                    <li>PVC</li>
+                    <li>Polypropylene</li>
+                </ul>
+
+                <ul>
+                    <li>VCM</li>
+                    <li>Benzene</li>
+                    <li>2EH</li>
+                    <li>IIPA</li>
+                    <li>PTA</li>
+                </ul>
+            </div>
+            Our petrochemical portfolio grows 35 to 50% year 
+            on year in terms of quantity, and the product 
+            range constantly grows.
+          </p>
+        </div>
+      </div>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+      <h2>More Information</h2>
+      <p>These are the products we have in store, Feel Free to call or send a
+          message through the <a href="index.html" style="color: inherit; text-decoration: underline;">homepage</a> whenever our services are needed.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 VISNL. All rights reserved.
+  </footer>
+
+  <script>
+    // Hamburger toggle 
+    const hamburger = document.getElementById('hamburger');
+    const sideMenu = document.getElementById('sideNav');
+
+    hamburger.addEventListener('click', () => {
+    if (sideMenu.style.right === '0px') {
+    sideMenu.style.right = '-250px';
+    } else {
+    sideMenu.style.right = '0px';
+    }
+    });
+
+function goTo(page) {
+  window.location.href = window.location.origin + '/' + page;
+}
+
+    // Fade in animation when scrolling
+    const products = document.querySelectorAll('.product-box');
+
+    function checkFade() {
+      const triggerBottom = window.innerHeight * 0.9;
+      products.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        if(boxTop < triggerBottom) {
+          box.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('load', checkFade);
+  </script>
+
+</body>
+</html>
